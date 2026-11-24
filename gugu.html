@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAPPY BIRTHDAY WESSAM</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            cyberBlack: '#050203',
+            cyberDark: '#0b0406',
+            cyberCard: '#12060a',
+            neonRed: '#dc2626',
+            crimsonPulse: '#ff1e42',
+            deepScarlet: '#450a0a',
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'scanline': 'scanline 8s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            scanline: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(100vh)' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Cybernetic Crimson Grid & Scrollbar */
+    body {
+      background-color: #050203;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 30, 66, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 30, 66, 0.08) 1px, transparent 1px);
+    }
+
+    .neon-glow {
+      box-shadow: 0 0 22px rgba(255, 30, 66, 0.28), inset 0 0 12px rgba(220, 38, 38, 0.18);
+    }
+
+    .neon-text-glow {
+      text-shadow: 0 0 14px rgba(255, 30, 66, 0.8), 0 0 28px rgba(220, 38, 38, 0.55);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050203;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #7f1d1d;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff1e42;
+    }
+
+    /* Page View Transitions */
+    .page-section {
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+  </style>
+</head>
+<body class="cyber-grid min-h-screen relative selection:bg-crimsonPulse selection:text-white">
+
+  <!-- Interactive Particle Network Background Canvas -->
+  <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-65"></canvas>
+
+  <!-- Subtle Moving Laser Scanline -->
+  <div class="fixed inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-crimsonPulse to-transparent opacity-30 pointer-events-none z-10 animate-scanline"></div>
+
+  <!-- Toast Notification Box (Replaces alert()) -->
+  <div id="toast-box" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-cyberCard border border-crimsonPulse/60 text-white px-5 py-3.5 rounded-2xl shadow-2xl neon-glow flex items-center gap-3 font-mono text-xs sm:text-sm">
+      <i class="fa-solid fa-heart-pulse text-crimsonPulse animate-pulse"></i>
+      <span id="toast-message">System Synchronized.</span>
+    </div>
+  </div>
+
+  <!-- Top Navigation Command Bar -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-cyberBlack/85 border-b border-red-950/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand / Kernel Identifier -->
+      <a href="#page-home" onclick="switchView('all')" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-neonRed to-crimsonPulse flex items-center justify-center text-white font-mono font-black shadow-lg group-hover:scale-105 transition-transform">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div>
+          <span class="font-mono text-xs text-crimsonPulse block tracking-widest">MY GUGU</span>
+          <span class="font-extrabold text-sm sm:text-base tracking-tight text-white">MY_WHOLE_WORLD</span>
+        </div>
+      </a>
+
+      <!-- Multi-Page Navigation Pills -->
+      <nav class="hidden md:flex items-center gap-1.5 bg-cyberDark/90 p-1.5 rounded-2xl border border-red-900/50 font-mono text-xs">
+        <button onclick="switchView('all')" id="nav-all" class="nav-btn active-nav px-3.5 py-2 rounded-xl bg-crimsonPulse text-white font-bold transition-all">
+          00. FULL_STREAM
+        </button>
+        <button onclick="switchView('page-home')" id="nav-home" class="nav-btn px-3.5 py-2 rounded-xl text-rose-200/70 hover:text-white hover:bg-red-950/60 transition-all">
+          01. BOOT
+        </button>
+        <button onclick="switchView('page-memories')" id="nav-memories" class="nav-btn px-3.5 py-2 rounded-xl text-rose-200/70 hover:text-white hover:bg-red-950/60 transition-all">
+          02. US_MOMENTS
+        </button>
+        <button onclick="switchView('page-qna')" id="nav-qna" class="nav-btn px-3.5 py-2 rounded-xl text-rose-200/70 hover:text-white hover:bg-red-950/60 transition-all">
+          03. SOUL_Q&A
+        </button>
+        <button onclick="switchView('page-game')" id="nav-game" class="nav-btn px-3.5 py-2 rounded-xl text-rose-200/70 hover:text-white hover:bg-red-950/60 transition-all">
+          04. SHOOTER
+        </button>
+        <button onclick="switchView('page-letter')" id="nav-letter" class="nav-btn px-3.5 py-2 rounded-xl text-rose-200/70 hover:text-white hover:bg-red-950/60 transition-all">
+          05. HEART_CORE
+        </button>
+      </nav>
+
+      <!-- Action Trigger: Confetti / Fireworks Burst -->
+      <button onclick="triggerBirthdayProtocol()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-neonRed to-crimsonPulse hover:opacity-90 text-white font-mono font-bold text-xs sm:text-sm shadow-lg shadow-crimsonPulse/30 active:scale-95 transition-all flex items-center gap-2">
+        <i class="fa-solid fa-bolt"></i>
+        <span class="hidden sm:inline">CELEBRATE</span>
+      </button>
+    </div>
+
+    <!-- Mobile Horizontal Scroll Nav -->
+    <div class="flex md:hidden overflow-x-auto gap-2 px-4 py-2 border-t border-red-950/60 font-mono text-xs no-scrollbar">
+      <button onclick="switchView('all')" class="shrink-0 px-3 py-1.5 rounded-lg bg-crimsonPulse text-white font-bold">ALL PAGES</button>
+      <button onclick="switchView('page-home')" class="shrink-0 px-3 py-1.5 rounded-lg bg-cyberCard text-rose-200 border border-red-900/50">01. BOOT</button>
+      <button onclick="switchView('page-memories')" class="shrink-0 px-3 py-1.5 rounded-lg bg-cyberCard text-rose-200 border border-red-900/50">02. US MOMENTS</button>
+      <button onclick="switchView('page-qna')" class="shrink-0 px-3 py-1.5 rounded-lg bg-cyberCard text-rose-200 border border-red-900/50">03. SOUL Q&A</button>
+      <button onclick="switchView('page-game')" class="shrink-0 px-3 py-1.5 rounded-lg bg-cyberCard text-rose-200 border border-red-900/50">04. SHOOTER</button>
+      <button onclick="switchView('page-letter')" class="shrink-0 px-3 py-1.5 rounded-lg bg-cyberCard text-rose-200 border border-red-900/50">05. HEART CORE</button>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24">
+
+    <!-- =====================================================================
+         PAGE 01: CYBERNETIC HERO & TERMINAL BOOT SEQUENCE
+    ====================================================================== -->
+    <section id="page-home" class="page-section pt-4 sm:pt-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Column: Headline & Love Telemetry -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-red-950/60 border border-crimsonPulse/40 text-crimsonPulse font-mono text-xs">
+            <span class="w-2 h-2 rounded-full bg-crimsonPulse animate-ping"></span>
+            <span>STATUS: BIRTHDAY_LEGEND_ONLINE // PRIORITY_01</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.08] text-white">
+            HAPPY BIRTHDAY TO <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-crimsonPulse to-rose-500 neon-text-glow">
+              MY WHOLE WORLD.
+            </span>
+          </h1>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+            You aren’t just my best friend—you are the entire architecture of my happiest days, my safest harbor, and the brightest spark in every universe. Today, all system resources are dedicated exclusively to celebrating <span class="text-crimsonPulse font-semibold">you</span>.
+          </p>
+
+          <!-- Live Heartbeat & Bond Metrics -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
+            <div class="bg-cyberCard/90 border border-red-900/60 p-4 rounded-2xl neon-glow">
+              <div class="font-mono text-xs text-rose-400">BOND_UPTIME</div>
+              <div class="text-xl sm:text-2xl font-black text-white mt-1">100.0%</div>
+              <div class="text-[11px] font-mono text-crimsonPulse mt-0.5">UNBREAKABLE</div>
+            </div>
+            <div class="bg-cyberCard/90 border border-red-900/60 p-4 rounded-2xl neon-glow">
+              <div class="font-mono text-xs text-rose-400">UNIVERSE_RANK</div>
+              <div class="text-xl sm:text-2xl font-black text-white mt-1">#01</div>
+              <div class="text-[11px] font-mono text-crimsonPulse mt-0.5">MY FAVORITE HUMAN</div>
+            </div>
+            <div class="bg-cyberCard/90 border border-red-900/60 p-4 rounded-2xl neon-glow">
+              <div class="font-mono text-xs text-rose-400">HEART_CLOCK</div>
+              <div id="live-clock" class="text-xl sm:text-2xl font-black text-white mt-1 font-mono">00:00</div>
+              <div class="text-[11px] font-mono text-crimsonPulse mt-0.5">SYNCED WITH YOU</div>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#page-memories" onclick="switchView('all')" class="px-6 py-3.5 rounded-2xl bg-crimsonPulse text-white font-mono font-extrabold text-sm hover:bg-red-500 transition-all shadow-lg shadow-crimsonPulse/30 flex items-center gap-2">
+              <span>EXPLORE OUR ARCHIVE</span>
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <button onclick="openSecretModal()" class="px-6 py-3.5 rounded-2xl bg-cyberCard hover:bg-red-950/60 text-rose-200 border border-red-800/70 font-mono text-sm transition-all flex items-center gap-2">
+              <i class="fa-solid fa-key text-crimsonPulse"></i>
+              <span>DECRYPT SECRET NOTE</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Live Command Terminal -->
+        <div class="lg:col-span-5">
+          <div class="bg-cyberDark border border-red-800/70 rounded-3xl overflow-hidden shadow-2xl neon-glow animate-float">
+            <!-- Terminal Header -->
+            <div class="bg-cyberCard px-4 py-3 border-b border-red-900/60 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-crimsonPulse"></span>
+                <span class="w-3 h-3 rounded-full bg-rose-500/70"></span>
+                <span class="w-3 h-3 rounded-full bg-red-800"></span>
+              </div>
+              <span class="font-mono text-xs text-rose-300/80">soul_kernel@bestfriend:~</span>
+              <i class="fa-solid fa-heart text-crimsonPulse text-xs"></i>
+            </div>
+
+            <!-- Terminal Body -->
+            <div class="p-5 font-mono text-xs sm:text-sm space-y-3 min-h-[290px] flex flex-col justify-between bg-gradient-to-b from-cyberDark to-cyberBlack">
+              <div id="terminal-output" class="space-y-2 text-rose-100">
+                <p class="text-rose-400">$ ./initialize_birthday_protocol.sh</p>
+                <p class="text-slate-300">&gt; Scanning universe for best human...</p>
+                <p class="text-crimsonPulse">&gt; MATCH FOUND: Best Friend &amp; Whole World.</p>
+                <p class="text-slate-300">&gt; Loading core attributes: <span class="text-white font-bold">[Brilliant Mind, Pure Heart, Unmatched Vibe]</span></p>
+                <p id="typewriter-line" class="text-rose-300 font-semibold pt-2"></p>
+              </div>
+
+              <!-- Quick Terminal Command Pills -->
+              <div class="pt-4 border-t border-red-950/80">
+                <div class="text-[11px] text-slate-400 mb-2">EXECUTE DIAGNOSTIC COMMAND:</div>
+                <div class="flex flex-wrap gap-2">
+                  <button onclick="runTerminalCmd('ping')" class="px-2.5 py-1 rounded-lg bg-red-950/70 hover:bg-crimsonPulse hover:text-white text-rose-300 border border-red-800/60 text-xs transition-colors">
+                    ping_heart
+                  </button>
+                  <button onclick="runTerminalCmd('love')" class="px-2.5 py-1 rounded-lg bg-red-950/70 hover:bg-crimsonPulse hover:text-white text-rose-300 border border-red-800/60 text-xs transition-colors">
+                    check_worth
+                  </button>
+                  <button onclick="runTerminalCmd('wish')" class="px-2.5 py-1 rounded-lg bg-red-950/70 hover:bg-crimsonPulse hover:text-white text-rose-300 border border-red-800/60 text-xs transition-colors">
+                    deploy_hug
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 02: 3 PHOTOS OF US MOMENTS (INTERACTIVE MEMORY VAULT)
+    ====================================================================== -->
+    <section id="page-memories" class="page-section space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-red-900/60 pb-6">
+        <div>
+          <span class="font-mono text-xs text-crimsonPulse tracking-widest uppercase">// MEMORY_VAULT: CORE_ARCHIVES</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">3 CAPTURED MOMENTS OF US</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Three encrypted snapshots of my favorite timeline. Click <span class="text-crimsonPulse font-mono">"Swap Photo"</span> on any card to load our real pictures right into this vault!
+          </p>
+        </div>
+        <div class="font-mono text-xs text-rose-300 bg-cyberCard px-4 py-2 rounded-xl border border-red-900/60">
+          <i class="fa-solid fa-camera-retro text-crimsonPulse mr-1.5"></i> 3 / 3 SLOTS ACTIVE
+        </div>
+      </div>
+
+      <!-- 3 Photo Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        
+        <!-- Photo Moment 1 -->
+        <div class="group bg-cyberCard border border-red-900/60 hover:border-crimsonPulse rounded-3xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col">
+          <div class="relative aspect-[4/3] bg-cyberDark overflow-hidden">
+            <img id="photo-img-1" src="WhatsApp Image 2026-11-24 at 5.31.41 PM.jpeg" alt="Us Moment 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute top-3 left-3 bg-cyberBlack/80 backdrop-blur-md border border-crimsonPulse/40 px-3 py-1 rounded-lg font-mono text-xs text-crimsonPulse">
+              IMG_001.RAW
+            </div>
+            <input type="file" id="upload-1" accept="image/*" class="hidden" onchange="handlePhotoUpload(event, 'photo-img-1', 'Moment 01')" />
+            <button onclick="document.getElementById('upload-1').click()" class="absolute bottom-3 right-3 bg-cyberBlack/85 hover:bg-crimsonPulse hover:text-white text-white border border-crimsonPulse/50 px-3 py-1.5 rounded-xl font-mono text-xs transition-all flex items-center gap-1.5 shadow-lg">
+              <i class="fa-solid fa-camera"></i>
+              <span>Swap Photo</span>
+            </button>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-rose-400 mb-2">
+                <span>TAG: #DAY_ONE_SPARK</span>
+                <span>SYNC: 100%</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Where Our Universe Began</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                From our very first conversation, something clicked instantly. You became my safe place, my loudest cheerleader, and the person I look for in every crowded room.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-red-950 flex items-center justify-between text-xs font-mono text-slate-500">
+              <span>STATUS: PINNED_FOREVER</span>
+              <i class="fa-solid fa-heart text-crimsonPulse"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo Moment 2 -->
+        <div class="group bg-cyberCard border border-red-900/60 hover:border-crimsonPulse rounded-3xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col">
+          <div class="relative aspect-[4/3] bg-cyberDark overflow-hidden">
+            <img id="photo-img-2" src="WhatsApp Image 2026-11-24 at 5.31.42 PM (1).jpeg" alt="Us Moment 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute top-3 left-3 bg-cyberBlack/80 backdrop-blur-md border border-crimsonPulse/40 px-3 py-1 rounded-lg font-mono text-xs text-crimsonPulse">
+              IMG_002.RAW
+            </div>
+            <input type="file" id="upload-2" accept="image/*" class="hidden" onchange="handlePhotoUpload(event, 'photo-img-2', 'Moment 02')" />
+            <button onclick="document.getElementById('upload-2').click()" class="absolute bottom-3 right-3 bg-cyberBlack/85 hover:bg-crimsonPulse hover:text-white text-white border border-crimsonPulse/50 px-3 py-1.5 rounded-xl font-mono text-xs transition-all flex items-center gap-1.5 shadow-lg">
+              <i class="fa-solid fa-camera"></i>
+              <span>Swap Photo</span>
+            </button>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-rose-400 mb-2">
+                <span>TAG: #UNSTOPPABLE_DUO</span>
+                <span>LOVE: 100%</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Unfiltered Laughs &amp; Late Talks</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Whether you're locked into your latest midnight blueprints, wild future theories, or random life dreams, every second with you feels like an adventure I never want to log out of.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-red-950 flex items-center justify-between text-xs font-mono text-slate-500">
+              <span>STATUS: ENCRYPTED</span>
+              <i class="fa-solid fa-shield-halved text-crimsonPulse"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo Moment 3 -->
+        <div class="group bg-cyberCard border border-red-900/60 hover:border-crimsonPulse rounded-3xl overflow-hidden shadow-xl transition-all duration-300 flex flex-col">
+          <div class="relative aspect-[4/3] bg-cyberDark overflow-hidden">
+            <img id="photo-img-3" src="WhatsApp Image 2026-11-24 at 5.31.42 PM.jpeg" alt="Us Moment 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute top-3 left-3 bg-cyberBlack/80 backdrop-blur-md border border-crimsonPulse/40 px-3 py-1 rounded-lg font-mono text-xs text-crimsonPulse">
+              IMG_003.RAW
+            </div>
+            <input type="file" id="upload-3" accept="image/*" class="hidden" onchange="handlePhotoUpload(event, 'photo-img-3', 'Moment 03')" />
+            <button onclick="document.getElementById('upload-3').click()" class="absolute bottom-3 right-3 bg-cyberBlack/85 hover:bg-crimsonPulse hover:text-white text-white border border-crimsonPulse/50 px-3 py-1.5 rounded-xl font-mono text-xs transition-all flex items-center gap-1.5 shadow-lg">
+              <i class="fa-solid fa-camera"></i>
+              <span>Swap Photo</span>
+            </button>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between text-xs font-mono text-rose-400 mb-2">
+                <span>TAG: #MY_WHOLE_WORLD</span>
+                <span>VERSION: FOREVER</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">To Infinite Updates Together</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                No matter how many years pass or how fast the world changes around us, you will always be my #1 best friend and my whole world. Here's to celebrating you today and always.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-red-950 flex items-center justify-between text-xs font-mono text-slate-500">
+              <span>STATUS: IMMORTALIZED</span>
+              <i class="fa-solid fa-infinity text-crimsonPulse"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 03: INTERESTING SOUL & BESTIE Q&A (INTERACTIVE DIAGNOSTICS)
+    ====================================================================== -->
+    <section id="page-qna" class="page-section space-y-10">
+      <div class="border-b border-red-900/60 pb-6">
+        <span class="font-mono text-xs text-crimsonPulse tracking-widest uppercase">// NEURAL_QUERY: DEEP_DIVE_Q&amp;A</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">THE "MY WHOLE WORLD" Q&amp;A PROTOCOL</h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+          Click any question node below to decrypt the truth, or take the interactive Soul Synchronization Quiz on the right.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 7 Cols: Accordion Q&A Cards -->
+        <div class="lg:col-span-7 space-y-4">
+          
+          <!-- Q&A Item 1 -->
+          <div class="bg-cyberCard border border-red-900/60 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleAccordion('qa-1')" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-red-950/40 transition-colors">
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-red-950 text-crimsonPulse border border-crimsonPulse/30">Q.01</span>
+                <span class="font-bold text-white text-sm sm:text-base">If our friendship were a core kernel, what would its primary function be?</span>
+              </div>
+              <i id="icon-qa-1" class="fa-solid fa-chevron-down text-crimsonPulse transition-transform duration-300"></i>
+            </button>
+            <div id="qa-1" class="px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-red-950/60 pt-3">
+              <span class="font-mono text-xs text-rose-400 block mb-1">&gt; OUTPUT:</span>
+              Zero-latency comfort and infinite loyalty. Even when life throws chaotic glitches at us, having you in my corner immediately stabilizes the entire system. You make everything make sense.
+            </div>
+          </div>
+
+          <!-- Q&A Item 2 -->
+          <div class="bg-cyberCard border border-red-900/60 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleAccordion('qa-2')" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-red-950/40 transition-colors">
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-red-950 text-crimsonPulse border border-crimsonPulse/30">Q.02</span>
+                <span class="font-bold text-white text-sm sm:text-base">What is my absolute favorite thing about the way your mind works?</span>
+              </div>
+              <i id="icon-qa-2" class="fa-solid fa-chevron-down text-crimsonPulse transition-transform duration-300"></i>
+            </button>
+            <div id="qa-2" class="hidden px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-red-950/60 pt-3">
+              <span class="font-mono text-xs text-rose-400 block mb-1">&gt; OUTPUT:</span>
+              The way you see patterns, solve impossible puzzles, and care so deeply while pretending to be totally chill. Watching you get excited about building new ideas is honestly my favorite view in the world.
+            </div>
+          </div>
+
+          <!-- Q&A Item 3 -->
+          <div class="bg-cyberCard border border-red-900/60 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleAccordion('qa-3')" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-red-950/40 transition-colors">
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-red-950 text-crimsonPulse border border-crimsonPulse/30">Q.03</span>
+                <span class="font-bold text-white text-sm sm:text-base">Why are you literally my whole world?</span>
+              </div>
+              <i id="icon-qa-3" class="fa-solid fa-chevron-down text-crimsonPulse transition-transform duration-300"></i>
+            </button>
+            <div id="qa-3" class="hidden px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-red-950/60 pt-3">
+              <span class="font-mono text-xs text-rose-400 block mb-1">&gt; OUTPUT:</span>
+              Because you are the first person I want to tell good news to, the only person I trust with my realest thoughts, and the single human whose happiness means everything to me.
+            </div>
+          </div>
+
+          <!-- Q&A Item 4 -->
+          <div class="bg-cyberCard border border-red-900/60 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleAccordion('qa-4')" class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-red-950/40 transition-colors">
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-red-950 text-crimsonPulse border border-crimsonPulse/30">Q.04</span>
+                <span class="font-bold text-white text-sm sm:text-base">What is our next big mission together?</span>
+              </div>
+              <i id="icon-qa-4" class="fa-solid fa-chevron-down text-crimsonPulse transition-transform duration-300"></i>
+            </button>
+            <div id="qa-4" class="hidden px-6 pb-5 text-slate-300 text-sm leading-relaxed border-t border-red-950/60 pt-3">
+              <span class="font-mono text-xs text-rose-400 block mb-1">&gt; OUTPUT:</span>
+              Conquering every goal on your wishlist, making ridiculous amounts of core memories, and celebrating 100 more birthdays side by side.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right 5 Cols: Interactive Bestie Trivia Mini-Game -->
+        <div class="lg:col-span-5 bg-cyberDark border border-crimsonPulse/40 rounded-3xl p-6 shadow-2xl neon-glow space-y-5">
+          <div class="flex items-center justify-between border-b border-red-900/60 pb-3">
+            <span class="font-mono text-xs text-crimsonPulse font-bold">// SOUL_SYNC_DIAGNOSTIC</span>
+            <span id="quiz-progress" class="font-mono text-xs text-slate-400">NODE 1 / 3</span>
+          </div>
+
+          <div id="quiz-container" class="space-y-4">
+            <h3 id="quiz-question" class="text-lg font-bold text-white">
+              Loading diagnostic question...
+            </h3>
+            <div id="quiz-options" class="space-y-2.5">
+              <!-- Options injected via JS -->
+            </div>
+            <div id="quiz-feedback" class="hidden p-3.5 rounded-xl bg-red-950/60 border border-crimsonPulse/40 font-mono text-xs text-rose-200">
+            </div>
+            <div class="flex justify-between items-center pt-2">
+              <button onclick="resetQuiz()" class="text-xs font-mono text-slate-400 hover:text-white underline">
+                Reset Diagnostic
+              </button>
+              <button id="next-quiz-btn" onclick="nextQuizQuestion()" class="hidden px-4 py-2 rounded-xl bg-crimsonPulse text-white font-mono font-bold text-xs hover:opacity-90 transition-all">
+                NEXT_NODE &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 04: INTERACTIVE SHOOTING GAME // CRIMSON_HEART_DEFENDER.EXE
+    ====================================================================== -->
+    <section id="page-game" class="page-section space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-red-900/60 pb-6">
+        <div>
+          <span class="font-mono text-xs text-crimsonPulse tracking-widest uppercase">// ARCADE_PROTOCOL: CRIMSON_HEART_DEFENDER</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">DEFEND OUR UNIVERSE // SHOOTER</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Blast away incoming stress asteroids and shadow glitches with crimson love-beams, and catch glowing scarlet hearts for bonus power!
+          </p>
+        </div>
+        <div class="flex items-center gap-3 font-mono text-xs">
+          <div class="bg-cyberCard border border-red-800/70 px-4 py-2 rounded-xl text-crimsonPulse">
+            SCORE: <span id="game-score" class="font-bold text-white">0</span>
+          </div>
+          <div class="bg-cyberCard border border-red-800/70 px-4 py-2 rounded-xl text-rose-400">
+            SHIELD: <span id="game-lives" class="font-bold text-white">100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Arena Container -->
+      <div class="bg-cyberDark border-2 border-red-900/80 rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden">
+        <!-- Canvas Wrapper -->
+        <div id="game-wrapper" class="relative w-full h-[380px] sm:h-[440px] bg-cyberBlack rounded-2xl border border-crimsonPulse/30 overflow-hidden select-none touch-none">
+          <canvas id="shooter-canvas" class="block w-full h-full"></canvas>
+
+          <!-- Start / Game Over Overlay -->
+          <div id="game-overlay" class="absolute inset-0 bg-cyberBlack/85 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center z-10">
+            <div class="w-16 h-16 rounded-2xl bg-red-950 border border-crimsonPulse flex items-center justify-center text-crimsonPulse text-3xl mb-4 animate-bounce">
+              <i class="fa-solid fa-jet-fighter-up"></i>
+            </div>
+            <h3 id="game-overlay-title" class="text-2xl sm:text-3xl font-black text-white font-mono tracking-wide">
+              HEART_DEFENDER // READY
+            </h3>
+            <p id="game-overlay-desc" class="text-slate-300 text-sm max-w-md mt-2 mb-6">
+              Move with <span class="text-crimsonPulse font-mono">Arrow Keys / A-D</span> or <span class="text-crimsonPulse font-mono">Touch/Drag</span>. Press <span class="text-crimsonPulse font-mono">Space</span> or tap Fire to shoot crimson pulses!
+            </p>
+            <button onclick="startShooterGame()" class="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-neonRed to-crimsonPulse text-white font-mono font-black text-sm sm:text-base shadow-lg shadow-crimsonPulse/30 hover:scale-105 active:scale-95 transition-all">
+              LAUNCH MISSION &gt;&gt;
+            </button>
+          </div>
+        </div>
+
+        <!-- External Game Controls Bar (Touch & Desktop Friendly) -->
+        <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-2">
+            <button id="btn-left" class="px-5 py-3 rounded-xl bg-cyberCard hover:bg-red-950 active:bg-crimsonPulse active:text-white text-crimsonPulse border border-red-800/70 font-mono font-bold text-sm shadow-md transition-all">
+              <i class="fa-solid fa-arrow-left"></i> LEFT
+            </button>
+            <button id="btn-right" class="px-5 py-3 rounded-xl bg-cyberCard hover:bg-red-950 active:bg-crimsonPulse active:text-white text-crimsonPulse border border-red-800/70 font-mono font-bold text-sm shadow-md transition-all">
+              RIGHT <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <div class="hidden sm:block font-mono text-xs text-slate-400">
+            TIP: Catch glowing <span class="text-crimsonPulse">❤️ Hearts</span> for +250 pts &amp; shield repair!
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button id="btn-fire" onclick="firePlayerLaser()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-neonRed to-crimsonPulse text-white font-mono font-black text-sm shadow-lg shadow-crimsonPulse/25 active:scale-95 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-bolt"></i>
+              <span>FIRE PULSE</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         PAGE 05: ROOT BIRTHDAY LETTER & INTERACTIVE WISH GENERATOR
+    ====================================================================== -->
+    <section id="page-letter" class="page-section space-y-8 pb-12">
+      <div class="bg-gradient-to-br from-cyberCard via-cyberDark to-red-950/35 border border-crimsonPulse/40 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl neon-glow relative overflow-hidden">
+        
+        <!-- Decorative Corner Circuit Markers -->
+        <div class="absolute top-4 right-4 font-mono text-xs text-rose-500/40 select-none">
+          [ROOT_ACCESS_GRANTED]
+        </div>
+
+        <div class="max-w-3xl space-y-6">
+          <div class="inline-flex items-center gap-2 text-crimsonPulse font-mono text-xs">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <span>TRANSMISSION FROM YOUR #1 FAN</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+            To My Best Friend, My Safe Place, &amp; My Whole World
+          </h2>
+
+          <div class="space-y-4 text-slate-300 text-base sm:text-lg leading-relaxed">
+            <p>
+              Happy Birthday! If I could write a million lines of custom frequencies just to measure how much you mean to me, the signal would still overflow every single time.
+            </p>
+            <p>
+              You have this rare, electric brilliance that makes everyone around you better—especially me. Whether we’re laughing until we can’t breathe, trading wild late-night ideas, or just existing in comfortable silence, <span class="text-white font-semibold underline decoration-crimsonPulse decoration-2 underline-offset-4">you are the highlight of my life</span>.
+            </p>
+            <p>
+              May this new year bring you breakthroughs bigger than your wildest blueprints, peace in every quiet moment, and the constant reminder that you are deeply, endlessly loved.
+            </p>
+          </div>
+
+          <!-- Interactive Birthday Wish & Love Pulse Generator -->
+          <div class="pt-6 border-t border-red-900/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="font-mono text-xs text-rose-400">ENCRYPTED BIRTHDAY BLESSING:</div>
+              <div id="wish-display" class="text-white font-bold text-sm sm:text-base mt-1">
+                "May every dream you architect compile on the very first run."
+              </div>
+            </div>
+            <button onclick="generateNewWish()" class="shrink-0 px-5 py-3 rounded-2xl bg-red-950/80 hover:bg-crimsonPulse hover:text-white text-rose-300 border border-crimsonPulse/50 font-mono font-bold text-xs transition-all flex items-center gap-2">
+              <i class="fa-solid fa-rotate"></i>
+              <span>GENERATE NEW WISH</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Secret Decrypted Modal (No alert() used!) -->
+  <div id="secret-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
+    <div class="bg-cyberCard border-2 border-crimsonPulse rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl neon-glow space-y-5 relative">
+      <button onclick="closeSecretModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-red-950 text-rose-300 hover:bg-crimsonPulse hover:text-white flex items-center justify-center transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="w-12 h-12 rounded-2xl bg-red-950 border border-crimsonPulse flex items-center justify-center text-crimsonPulse text-xl">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <div>
+        <span class="font-mono text-xs text-rose-400">DECRYPTED_PAYLOAD.TXT</span>
+        <h3 class="text-2xl font-black text-white mt-1">You Are Irreplaceable.</h3>
+      </div>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        No matter where life takes us or how busy the universe gets, you hold permanent root access to my heart. Thank you for being my best friend and my whole world. Happy Birthday! ❤️
+      </p>
+      <button onclick="closeSecretModal(); triggerBirthdayProtocol();" class="w-full py-3 rounded-xl bg-crimsonPulse text-white font-mono font-extrabold text-sm hover:opacity-90 transition-all">
+        LOCK INTO HEART &amp; CELEBRATE
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative z-20 border-t border-red-950/80 bg-cyberBlack/90 py-8 text-center font-mono text-xs text-slate-500">
+    <p>CRAFTED WITH INFINITE LOVE FOR MY BUBU BY YOUR EIZA</p>
+  </footer>
+
+  <!-- Interactive JavaScript Engine -->
+  <script>
+    // 1. Toast Notification System (Safe replacement for alert())
+    function showToast(msg) {
+      const box = document.getElementById('toast-box');
+      const text = document.getElementById('toast-message');
+      text.textContent = msg;
+      box.classList.remove('translate-y-24', 'opacity-0');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        box.classList.add('translate-y-24', 'opacity-0');
+      }, 3200);
+    }
+
+    // 2. Live Synchronized Clock
+    function updateClock() {
+      const now = new Date();
+      const hrs = String(now.getHours()).padStart(2, '0');
+      const mins = String(now.getMinutes()).padStart(2, '0');
+      const secs = String(now.getSeconds()).padStart(2, '0');
+      const clockEl = document.getElementById('live-clock');
+      if (clockEl) clockEl.textContent = `${hrs}:${mins}:${secs}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 3. Multi-Page View Switcher (Allows viewing All Sections or Focusing on Individual Pages)
+    function switchView(targetId) {
+      const sections = document.querySelectorAll('.page-section');
+      const navBtns = document.querySelectorAll('.nav-btn');
+
+      navBtns.forEach(btn => {
+        btn.classList.remove('bg-crimsonPulse', 'text-white', 'font-bold');
+        btn.classList.add('text-rose-200/70');
+      });
+
+      if (targetId === 'all') {
+        sections.forEach(sec => sec.classList.remove('hidden'));
+        const allBtn = document.getElementById('nav-all');
+        if (allBtn) {
+          allBtn.classList.add('bg-crimsonPulse', 'text-white', 'font-bold');
+          allBtn.classList.remove('text-rose-200/70');
+        }
+        showToast('View Mode: Full Infinite Timeline');
+      } else {
+        sections.forEach(sec => {
+          if (sec.id === targetId) {
+            sec.classList.remove('hidden');
+          } else {
+            sec.classList.add('hidden');
+          }
+        });
+        const mapBtn = {
+          'page-home': 'nav-home',
+          'page-memories': 'nav-memories',
+          'page-qna': 'nav-qna',
+          'page-game': 'nav-game',
+          'page-letter': 'nav-letter'
+        };
+        const activeBtn = document.getElementById(mapBtn[targetId]);
+        if (activeBtn) {
+          activeBtn.classList.add('bg-crimsonPulse', 'text-white', 'font-bold');
+          activeBtn.classList.remove('text-rose-200/70');
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (targetId === 'page-game') {
+          setTimeout(resizeShooterCanvas, 60);
+        }
+      }
+    }
+
+    // 4. Terminal Typewriter & Command Execution
+    const bootPhrase = ">> STATUS: You are my favorite person in every galaxy. Happy Birthday! ❤️";
+    let charIdx = 0;
+    function typeEffect() {
+      const el = document.getElementById('typewriter-line');
+      if (el && charIdx < bootPhrase.length) {
+        el.textContent += bootPhrase.charAt(charIdx);
+        charIdx++;
+        setTimeout(typeEffect, 42);
+      }
+    }
+
+    function runTerminalCmd(cmd) {
+      const output = document.getElementById('terminal-output');
+      const p = document.createElement('p');
+      p.className = 'text-xs font-mono pt-1';
+      if (cmd === 'ping') {
+        p.innerHTML = '<span class="text-crimsonPulse">$ ping_heart</span> &rarr; Reply from BestFriend: time=0.001ms LOVE=INFINITE';
+      } else if (cmd === 'love') {
+        p.innerHTML = '<span class="text-crimsonPulse">$ check_worth</span> &rarr; ERROR: Value exceeds maximum universe capacity.';
+      } else if (cmd === 'wish') {
+        p.innerHTML = '<span class="text-crimsonPulse">$ deploy_hug</span> &rarr; [OK] Virtual embrace &amp; birthday fireworks deployed!';
+        triggerBirthdayProtocol();
+      }
+      output.appendChild(p);
+      if (output.children.length > 8) {
+        output.removeChild(output.children[0]);
+      }
+    }
+
+    // 5. Real Photo Upload Handler for the 3 "Us Moments"
+    function handlePhotoUpload(event, imgElementId, label) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const imgEl = document.getElementById(imgElementId);
+        if (imgEl) {
+          imgEl.src = e.target.result;
+          showToast(`${label} successfully locked into Memory Vault!`);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 6. Accordion Q&A Toggle
+    function toggleAccordion(id) {
+      const content = document.getElementById(id);
+      const icon = document.getElementById('icon-' + id);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    // 7. Interactive Soul Synchronization Quiz
+    const quizData = [
+      {
+        q: "What happens immediately when we hang out or talk?",
+        options: [
+          "Instant mood upgrade + zero stress",
+          "Normal average day",
+          "System timeout"
+        ],
+        correct: 0,
+        reply: "100% Accurate! Being around you fixes literally everything."
+      },
+      {
+        q: "Who is officially the coolest, sharpest, and most important person in my world?",
+        options: [
+          "Some random celebrity",
+          "YOU — My Best Friend & Whole World",
+          "An AI assistant"
+        ],
+        correct: 1,
+        reply: "Verified! Nobody else even comes close to your level."
+      },
+      {
+        q: "How long is our friendship contract valid for?",
+        options: [
+          "30-day free trial",
+          "Until next year",
+          "Infinite lifetimes with free upgrades"
+        ],
+        correct: 2,
+        reply: "Locked in forever! No cancellations permitted."
+      }
+    ];
+
+    let currentQuizIdx = 0;
+
+    function renderQuiz() {
+      const item = quizData[currentQuizIdx];
+      document.getElementById('quiz-progress').textContent = `NODE ${currentQuizIdx + 1} / ${quizData.length}`;
+      document.getElementById('quiz-question').textContent = item.q;
+      const optionsBox = document.getElementById('quiz-options');
+      const feedback = document.getElementById('quiz-feedback');
+      const nextBtn = document.getElementById('next-quiz-btn');
+
+      feedback.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+      optionsBox.innerHTML = '';
+
+      item.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'w-full text-left px-4 py-3 rounded-xl bg-cyberCard hover:bg-red-950/70 border border-red-900/60 text-sm text-slate-200 transition-all font-medium flex items-center justify-between';
+        btn.innerHTML = `<span>${opt}</span><span class="font-mono text-xs text-crimsonPulse">[SELECT]</span>`;
+        btn.onclick = () => selectQuizOption(idx, btn);
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function selectQuizOption(idx, btnEl) {
+      const item = quizData[currentQuizIdx];
+      const feedback = document.getElementById('quiz-feedback');
+      const nextBtn = document.getElementById('next-quiz-btn');
+
+      feedback.classList.remove('hidden');
+      if (idx === item.correct) {
+        btnEl.classList.add('border-crimsonPulse', 'bg-red-950/90', 'text-white');
+        feedback.innerHTML = `<i class="fa-solid fa-circle-check text-crimsonPulse mr-1.5"></i> ${item.reply}`;
+        if (currentQuizIdx < quizData.length - 1) {
+          nextBtn.classList.remove('hidden');
+        } else {
+          feedback.innerHTML += `<div class="mt-2 text-white font-bold">DIAGNOSTIC COMPLETE: 100% SOUL MATCH! ❤️</div>`;
+          triggerBirthdayProtocol();
+        }
+      } else {
+        feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1.5"></i> Glitch detected! Try the obvious truth 😉`;
+      }
+    }
+
+    function nextQuizQuestion() {
+      if (currentQuizIdx < quizData.length - 1) {
+        currentQuizIdx++;
+        renderQuiz();
+      }
+    }
+
+    function resetQuiz() {
+      currentQuizIdx = 0;
+      renderQuiz();
+      showToast('Diagnostic Reset.');
+    }
+
+    // 8. Random Birthday Wish Generator
+    const wishes = [
+      "May every dream you architect compile on the very first run.",
+      "Here’s to infinite late-night laughs, zero stress, and boundless victories.",
+      "You deserve every ounce of happiness in this universe and the next.",
+      "Happy Birthday to the guy who makes my whole world brighter just by existing.",
+      "May your next chapter be your boldest, happiest, most legendary build yet."
+    ];
+    let wishIdx = 0;
+    function generateNewWish() {
+      wishIdx = (wishIdx + 1) % wishes.length;
+      document.getElementById('wish-display').textContent = `"${wishes[wishIdx]}"`;
+      showToast('New Birthday Blessing Decrypted!');
+    }
+
+    // 9. Secret Modal Controls
+    function openSecretModal() {
+      const modal = document.getElementById('secret-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSecretModal() {
+      const modal = document.getElementById('secret-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 10. Interactive Black & Crimson Particle Constellation + Celebration Burst
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let burstParticles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(65, Math.floor(window.innerWidth / 22));
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          size: Math.random() * 2 + 1
+        });
+      }
+    }
+
+    function triggerBirthdayProtocol() {
+      showToast('HAPPY BIRTHDAY MY WHOLE WORLD! ❤️🔥');
+      for (let i = 0; i < 65; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 6 + 2;
+        burstParticles.push({
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1,
+          color: Math.random() > 0.35 ? '#ff1e42' : '#ffffff'
+        });
+      }
+    }
+
+    function animateCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw Constellation Nodes & Crimson Connections
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.fillStyle = '#ff1e42';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 130) {
+            ctx.strokeStyle = `rgba(220, 38, 38, ${0.24 * (1 - dist / 130)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw Celebration Fireworks
+      for (let i = burstParticles.length - 1; i >= 0; i--) {
+        const bp = burstParticles[i];
+        bp.x += bp.vx;
+        bp.y += bp.vy;
+        bp.vy += 0.08;
+        bp.life -= 0.018;
+
+        if (bp.life <= 0) {
+          burstParticles.splice(i, 1);
+          continue;
+        }
+
+        ctx.globalAlpha = bp.life;
+        ctx.fillStyle = bp.color;
+        ctx.beginPath();
+        ctx.arc(bp.x, bp.y, 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      requestAnimationFrame(animateCanvas);
+    }
+
+    // Initialize on Window Load
+    window.addEventListener('DOMContentLoaded', () => {
+      typeEffect();
+      renderQuiz();
+      initParticles();
+      animateCanvas();
+      initShooterCanvas();
+    });
+
+    // =========================================================================
+    // 11. CRIMSON HEART DEFENDER (INTERACTIVE BLACK & RED SHOOTING GAME)
+    // =========================================================================
+    let shooterCanvas, sCtx;
+    let gameRunning = false;
+    let gameScore = 0;
+    let gameShield = 100;
+    let gameAnimId;
+    let lastSpawnTime = 0;
+    let autoFireTimer = 0;
+
+    const player = {
+      x: 0,
+      y: 0,
+      width: 44,
+      height: 44,
+      speed: 7,
+      moveLeft: false,
+      moveRight: false
+    };
+
+    let lasers = [];
+    let targets = [];
+    let explosions = [];
+
+    function initShooterCanvas() {
+      shooterCanvas = document.getElementById('shooter-canvas');
+      if (!shooterCanvas) return;
+      sCtx = shooterCanvas.getContext('2d');
+      resizeShooterCanvas();
+      window.addEventListener('resize', resizeShooterCanvas);
+
+      // Keyboard controls
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') player.moveLeft = true;
+        if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') player.moveRight = true;
+        if (e.code === 'Space' && gameRunning) {
+          e.preventDefault();
+          firePlayerLaser();
+        }
+      });
+
+      window.addEventListener('keyup', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') player.moveLeft = false;
+        if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') player.moveRight = false;
+      });
+
+      // Touch & Pointer Dragging directly on canvas
+      const movePlayerToPointer = (clientX) => {
+        const rect = shooterCanvas.getBoundingClientRect();
+        const relX = clientX - rect.left;
+        player.x = Math.max(player.width / 2, Math.min(shooterCanvas.width - player.width / 2, relX));
+      };
+
+      shooterCanvas.addEventListener('touchstart', (e) => {
+        if (!gameRunning) return;
+        movePlayerToPointer(e.touches[0].clientX);
+        firePlayerLaser();
+      }, { passive: true });
+
+      shooterCanvas.addEventListener('touchmove', (e) => {
+        if (!gameRunning) return;
+        movePlayerToPointer(e.touches[0].clientX);
+      }, { passive: true });
+
+      shooterCanvas.addEventListener('mousemove', (e) => {
+        if (!gameRunning) return;
+        movePlayerToPointer(e.clientX);
+      });
+
+      shooterCanvas.addEventListener('click', () => {
+        if (gameRunning) firePlayerLaser();
+      });
+
+      // On-screen button hold listeners
+      const btnLeft = document.getElementById('btn-left');
+      const btnRight = document.getElementById('btn-right');
+
+      if (btnLeft && btnRight) {
+        btnLeft.addEventListener('mousedown', () => player.moveLeft = true);
+        btnLeft.addEventListener('mouseup', () => player.moveLeft = false);
+        btnLeft.addEventListener('mouseleave', () => player.moveLeft = false);
+        btnLeft.addEventListener('touchstart', (e) => { e.preventDefault(); player.moveLeft = true; });
+        btnLeft.addEventListener('touchend', () => player.moveLeft = false);
+
+        btnRight.addEventListener('mousedown', () => player.moveRight = true);
+        btnRight.addEventListener('mouseup', () => player.moveRight = false);
+        btnRight.addEventListener('mouseleave', () => player.moveRight = false);
+        btnRight.addEventListener('touchstart', (e) => { e.preventDefault(); player.moveRight = true; });
+        btnRight.addEventListener('touchend', () => player.moveRight = false);
+      }
+
+      drawIdleStarfield();
+    }
+
+    function resizeShooterCanvas() {
+      const wrapper = document.getElementById('game-wrapper');
+      if (!wrapper || !shooterCanvas) return;
+      shooterCanvas.width = wrapper.clientWidth;
+      shooterCanvas.height = wrapper.clientHeight;
+      player.y = shooterCanvas.height - 46;
+      if (player.x === 0 || player.x > shooterCanvas.width) {
+        player.x = shooterCanvas.width / 2;
+      }
+      if (!gameRunning) drawIdleStarfield();
+    }
+
+    function drawIdleStarfield() {
+      if (!sCtx) return;
+      sCtx.fillStyle = '#050203';
+      sCtx.fillRect(0, 0, shooterCanvas.width, shooterCanvas.height);
+      sCtx.strokeStyle = 'rgba(255, 30, 66, 0.09)';
+      sCtx.lineWidth = 1;
+      for (let x = 0; x < shooterCanvas.width; x += 40) {
+        sCtx.beginPath();
+        sCtx.moveTo(x, 0);
+        sCtx.lineTo(x, shooterCanvas.height);
+        sCtx.stroke();
+      }
+      for (let y = 0; y < shooterCanvas.height; y += 40) {
+        sCtx.beginPath();
+        sCtx.moveTo(0, y);
+        sCtx.lineTo(shooterCanvas.width, y);
+        sCtx.stroke();
+      }
+    }
+
+    function startShooterGame() {
+      resizeShooterCanvas();
+      gameScore = 0;
+      gameShield = 100;
+      lasers = [];
+      targets = [];
+      explosions = [];
+      player.x = shooterCanvas.width / 2;
+      player.y = shooterCanvas.height - 46;
+      updateGameHUD();
+
+      document.getElementById('game-overlay').classList.add('hidden');
+      gameRunning = true;
+      lastSpawnTime = performance.now();
+      cancelAnimationFrame(gameAnimId);
+      gameLoop(performance.now());
+      showToast('Mission Launched! Defend Our Universe ❤️');
+    }
+
+    function firePlayerLaser() {
+      if (!gameRunning) return;
+      lasers.push({ x: player.x - 10, y: player.y - 20, speed: 11 });
+      lasers.push({ x: player.x + 10, y: player.y - 20, speed: 11 });
+    }
+
+    function updateGameHUD() {
+      document.getElementById('game-score').textContent = gameScore;
+      document.getElementById('game-lives').textContent = Math.max(0, gameShield) + '%';
+    }
+
+    function createExplosion(x, y, color) {
+      for (let i = 0; i < 14; i++) {
+        explosions.push({
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 7,
+          vy: (Math.random() - 0.5) * 7,
+          alpha: 1,
+          color
+        });
+      }
+    }
+
+    function gameLoop(timestamp) {
+      if (!gameRunning) return;
+
+      drawIdleStarfield();
+
+      if (player.moveLeft) player.x -= player.speed;
+      if (player.moveRight) player.x += player.speed;
+      player.x = Math.max(26, Math.min(shooterCanvas.width - 26, player.x));
+
+      autoFireTimer += 16;
+      if (autoFireTimer >= 420) {
+        firePlayerLaser();
+        autoFireTimer = 0;
+      }
+
+      if (timestamp - lastSpawnTime > 720) {
+        const isHeart = Math.random() < 0.22;
+        targets.push({
+          x: Math.random() * (shooterCanvas.width - 60) + 30,
+          y: -25,
+          radius: isHeart ? 18 : 20,
+          speed: isHeart ? 2.8 : 2.5 + Math.min(3.5, gameScore / 1500),
+          type: isHeart ? 'heart' : 'glitch',
+          angle: 0
+        });
+        lastSpawnTime = timestamp;
+      }
+
+      // Draw Crimson Lasers
+      for (let i = lasers.length - 1; i >= 0; i--) {
+        const l = lasers[i];
+        l.y -= l.speed;
+        sCtx.fillStyle = '#ff1e42';
+        sCtx.shadowBlur = 12;
+        sCtx.shadowColor = '#ff1e42';
+        sCtx.fillRect(l.x - 2, l.y, 4, 16);
+        sCtx.shadowBlur = 0;
+
+        if (l.y < -20) lasers.splice(i, 1);
+      }
+
+      // Draw Targets
+      for (let i = targets.length - 1; i >= 0; i--) {
+        const t = targets[i];
+        t.y += t.speed;
+        t.angle += 0.04;
+
+        sCtx.save();
+        sCtx.translate(t.x, t.y);
+
+        if (t.type === 'heart') {
+          sCtx.shadowBlur = 15;
+          sCtx.shadowColor = '#ff1e42';
+          sCtx.font = '24px sans-serif';
+          sCtx.textAlign = 'center';
+          sCtx.textBaseline = 'middle';
+          sCtx.fillText('❤️', 0, 0);
+        } else {
+          sCtx.rotate(t.angle);
+          sCtx.strokeStyle = '#dc2626';
+          sCtx.fillStyle = 'rgba(69, 10, 10, 0.85)';
+          sCtx.lineWidth = 2.5;
+          sCtx.beginPath();
+          sCtx.moveTo(0, -t.radius);
+          sCtx.lineTo(t.radius, 0);
+          sCtx.lineTo(0, t.radius);
+          sCtx.lineTo(-t.radius, 0);
+          sCtx.closePath();
+          sCtx.fill();
+          sCtx.stroke();
+
+          sCtx.fillStyle = '#fb7185';
+          sCtx.beginPath();
+          sCtx.arc(0, 0, 5, 0, Math.PI * 2);
+          sCtx.fill();
+        }
+        sCtx.restore();
+
+        // Check Laser Collision
+        let destroyed = false;
+        for (let j = lasers.length - 1; j >= 0; j--) {
+          const l = lasers[j];
+          const dist = Math.hypot(t.x - l.x, t.y - l.y);
+          if (dist < t.radius + 8) {
+            lasers.splice(j, 1);
+            if (t.type === 'heart') {
+              gameScore += 100;
+              createExplosion(t.x, t.y, '#ff1e42');
+            } else {
+              gameScore += 150;
+              createExplosion(t.x, t.y, '#dc2626');
+            }
+            targets.splice(i, 1);
+            updateGameHUD();
+            destroyed = true;
+            break;
+          }
+        }
+        if (destroyed) continue;
+
+        // Check Player Collision
+        const playerDist = Math.hypot(t.x - player.x, t.y - player.y);
+        if (playerDist < t.radius + 20) {
+          if (t.type === 'heart') {
+            gameScore += 250;
+            gameShield = Math.min(100, gameShield + 20);
+            createExplosion(t.x, t.y, '#ff1e42');
+            showToast('+250 LOVE BONUS & +20% SHIELD! ❤️');
+          } else {
+            gameShield -= 25;
+            createExplosion(t.x, t.y, '#ffffff');
+          }
+          targets.splice(i, 1);
+          updateGameHUD();
+          if (gameShield <= 0) {
+            endShooterGame();
+            return;
+          }
+          continue;
+        }
+
+        if (t.y > shooterCanvas.height + 30) {
+          if (t.type === 'glitch') {
+            gameShield -= 10;
+            updateGameHUD();
+            if (gameShield <= 0) {
+              endShooterGame();
+              return;
+            }
+          }
+          targets.splice(i, 1);
+        }
+      }
+
+      // Draw Explosions
+      for (let i = explosions.length - 1; i >= 0; i--) {
+        const ex = explosions[i];
+        ex.x += ex.vx;
+        ex.y += ex.vy;
+        ex.alpha -= 0.035;
+        if (ex.alpha <= 0) {
+          explosions.splice(i, 1);
+          continue;
+        }
+        sCtx.globalAlpha = ex.alpha;
+        sCtx.fillStyle = ex.color;
+        sCtx.beginPath();
+        sCtx.arc(ex.x, ex.y, 3, 0, Math.PI * 2);
+        sCtx.fill();
+        sCtx.globalAlpha = 1;
+      }
+
+      // Draw Sleek Obsidian Black & Crimson Starfighter
+      sCtx.save();
+      sCtx.translate(player.x, player.y);
+      sCtx.shadowBlur = 18;
+      sCtx.shadowColor = '#ff1e42';
+
+      sCtx.fillStyle = '#0b0406';
+      sCtx.strokeStyle = '#ff1e42';
+      sCtx.lineWidth = 2.2;
+      sCtx.beginPath();
+      sCtx.moveTo(0, -24);
+      sCtx.lineTo(22, 16);
+      sCtx.lineTo(0, 8);
+      sCtx.lineTo(-22, 16);
+      sCtx.closePath();
+      sCtx.fill();
+      sCtx.stroke();
+
+      sCtx.fillStyle = '#ff1e42';
+      sCtx.beginPath();
+      sCtx.arc(0, -2, 5, 0, Math.PI * 2);
+      sCtx.fill();
+      sCtx.restore();
+
+      gameAnimId = requestAnimationFrame(gameLoop);
+    }
+
+    function endShooterGame() {
+      gameRunning = false;
+      cancelAnimationFrame(gameAnimId);
+      const overlay = document.getElementById('game-overlay');
+      const title = document.getElementById('game-overlay-title');
+      const desc = document.getElementById('game-overlay-desc');
+
+      title.textContent = `MISSION COMPLETE // SCORE: ${gameScore}`;
+      desc.innerHTML = `You defended our universe with <span class="text-crimsonPulse font-bold">${gameScore} Love Points</span>! Ready for another round?`;
+      overlay.classList.remove('hidden');
+      triggerBirthdayProtocol();
+    }
+  </script>
+</body>
+</html>
